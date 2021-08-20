@@ -1,0 +1,53 @@
+$sec-color: grey;
+$main-color: black;
+
+@mixin moveLabelUp {
+  top: -25px;
+  font-size: 14px;
+  color: $main-color;
+  font-weight: 600;
+}
+
+.group {
+  margin: 50px 0;
+  position: relative;
+
+  .form-input:-webkit-autofill,
+  .form-input:-webkit-autofill:hover,
+  .form-input:-webkit-autofill:focus,
+  .form-input:-webkit-autofill:active {
+    box-shadow: 0 0 0 30px white inset !important;
+  }
+
+  .form-input {
+    // 100% of 45vw of SignIn component
+    width: 100%;
+    padding: 5px 10px 10px 5px;
+    background: none;
+    border: none;
+    display: block;
+    background-color: white;
+    border-bottom: 1px solid $main-color;
+
+    &:focus {
+      outline: none;
+    }
+
+    // selects every property of .form-input-label that is preceded by
+    // a .form-input when a focus event occurs at .form-input
+    &:focus ~ .form-input-label {
+      @include moveLabelUp;
+    }
+  }
+
+  .form-input-label {
+    color: $sec-color;
+    font-size: 16px;
+    font-weight: normal;
+    // with absolute, top, left, etc are availabe
+    // parent is group class
+    position: absolute;
+    left: 5px;
+    transition: 600ms ease all;
+  }
+}

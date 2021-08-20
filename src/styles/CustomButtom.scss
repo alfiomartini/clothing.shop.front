@@ -1,0 +1,49 @@
+@mixin basic-button {
+  min-width: 165px;
+  width: auto;
+  height: 50px;
+  letter-spacing: 0.5px;
+  line-height: 50px;
+  padding: 0 35px 0 35px;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: "Open Sans Condensed", sans-serif;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.custom-btn {
+  @include basic-button();
+  background-color: black;
+  color: white;
+
+  &:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+  }
+}
+
+.inverted-btn {
+  @include basic-button();
+  background-color: white;
+  color: black;
+
+  &:hover {
+    background-color: black;
+    color: white;
+  }
+}
+
+.google-btn {
+  @include basic-button();
+  background-color: blue;
+  color: white;
+
+  &:hover {
+    background-color: white;
+    color: blue;
+    border: 1px solid blue;
+  }
+}

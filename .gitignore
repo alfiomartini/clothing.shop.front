@@ -12,6 +12,13 @@
 /build
 
 # misc
+/ishua_files
+/css
+firebase.pdf
+Complete-React-Course-Course-Guideline.pdf
+notes.txt
+firebase_obj.js
+
 .DS_Store
 .env.local
 .env.development.local
