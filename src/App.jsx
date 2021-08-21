@@ -45,28 +45,30 @@ class App extends React.Component{
   unsubscribeFromAuth = null;
   componentDidMount(){
     // async here is needed because the use of await in  line 55
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged   (userAuth => {
       // if there is an authenticated user
       console.log('app userAuth', userAuth);
       if (userAuth){
         // fetch  a reference to the user from the db (existing or created)
-        // there is one in this case, since userAuth is not null
-        // this.updateState(userAuth);
-        const userRef = await createUserProfileDoc(userAuth);
-        // onSnapshot queries the 'exists' property of snapShot
-        // it must be true, since we have an authUser and hence data (snaphShot.data)
-        userRef.onSnapshot(snapShot => {
-          this.setState({currentUser:{
-              id: snapShot.id,
-              ...snapShot.data() //json object converted to js
-            }
-          });
-          //redux update
-          this.props.updateUser({
-            id: snapShot.id,
-            ...snapShot.data()
-          });
-        });
+       // onSnapshot queries the 'exists' property of snapShot
+        // it must be true, since we have an authUser and hence data (query.data())
+        // https://firebase.google.com/docs/firestore/query-data/listen
+        createUserProfileDoc(userAuth)
+        .then(userRef => {
+          userRef.onSnapshot(query => {
+            this.setState({currentUser:{
+                id: query.id,
+                ...query.data() //json data converted to js
+              }
+            });
+            //redux update
+            this.props.updateUser({
+              id: query.id,
+              ...query.data()
+            });
+          })
+        })
+        .catch(error => console.log('Error accessing data  from', userAuth));
       } else {
         // user is signed out
         console.log('No user is signed in');
