@@ -19,16 +19,6 @@ import {connect} from 'react-redux';
 import {setCurrentUser} from './reducers/actions';
 import {selectCurrentUser} from './reducers/selectors';
 
-
-// const paths = SECTIONS.reduce((acc, item) => {
-//     const shopName = item.title;
-//     acc[shopName] = '/' +  item.path;
-//     return acc;
-// }, {});
-
-
-// console.log(paths);
-
 class App extends React.Component{
   constructor(props){
     super(props);
@@ -44,27 +34,26 @@ class App extends React.Component{
 
   unsubscribeFromAuth = null;
   componentDidMount(){
-    // async here is needed because the use of await in  line 55
-    this.unsubscribeFromAuth = auth.onAuthStateChanged   (userAuth => {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged (userAuth => {
       // if there is an authenticated user
       console.log('app userAuth', userAuth);
       if (userAuth){
         // fetch  a reference to the user from the db (existing or created)
        // onSnapshot queries the 'exists' property of snapShot
-        // it must be true, since we have an authUser and hence data (query.data())
+        // it must be true, since we have an authUser and hence data (query.data()) query = doc
         // https://firebase.google.com/docs/firestore/query-data/listen
         createUserProfileDoc(userAuth)
         .then(userRef => {
-          userRef.onSnapshot(query => {
+          userRef.onSnapshot(doc => {
             this.setState({currentUser:{
-                id: query.id,
-                ...query.data() //json data converted to js
+                id: doc.id,
+                ...doc.data() //json data converted to js
               }
             });
             //redux update
             this.props.updateUser({
-              id: query.id,
-              ...query.data()
+              id: doc.id,
+              ...doc.data()
             });
           })
         })

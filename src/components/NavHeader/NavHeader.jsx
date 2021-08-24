@@ -41,12 +41,9 @@ const NavHeader = ({currentUser, hidden}) => {
         <LinkBox to='/shop'>
           CONTACT
         </LinkBox>
-        
         {renderSignOut()}
-
         <CartIcon className='' />
       </Options>
-      
       {hidden ? null: <CartDropdown />}
     </NavContainer>
   )

@@ -38,34 +38,42 @@ provider.setCustomParameters({prompt:'select_account'});
 // console.log(auth.signInWithPopup);
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
-// https://stackoverflow.com/questions/37980559/is-it-better-to-return-undefined-or-null-from-a-javascript-function#:~:text=Undefined%20typically%20refers%20to%20something,return%20value%20implicitly%20returns%20undefined.
-export const createUserProfileDoc = async (userAuth, additional) => {
-  if (!userAuth) return null;
+// https://firebase.google.com/docs/firestore/query-data/get-data
+export const createUserProfileDoc = (userAuth, additional) => {
+  if (!userAuth) return Promise.resolve(null);//never executed, because the 
+  // call ensures userAuth is defined 
 
   const userRef = firestore.doc(`/users/${userAuth.uid}`);
   // snaphot is the object pointed to by userRef
-  const snapshot = await userRef.get();
-  // console.log('snaphsot', snapshot);
-  if (!snapshot.exists){
-    // let us save the userAuth info in the database
-    const { displayName, email } = userAuth;
-    const createdAt = new Date();
-    
-    // creates snapshot
-    userRef.set({
-      // if a property name in brace notation isn’t followed by a value, its value is taken from the binding with the same name.
-      displayName,
-      email,
-      createdAt,
-      ...additional
-    })
-    .then(() => console.log('data added successfully for user'))
-    .catch(error => console.log('error creating user', error));
-  } else {
-    console.log('There is already data at this memory address(reference');
-  }
-  // we might want use this reference
-  return userRef;
+  return userRef.get()
+  .then(doc => {
+    if (!doc.exists){
+      // let us save the userAuth info in the database
+      const { displayName, email } = userAuth;
+      const createdAt = new Date();
+      // creates doc in the db
+      userRef.set({
+        displayName,
+        email,
+        createdAt,
+        ...additional
+      })
+      .then(() => 
+      {
+        console.log('data added successfully for user');
+      })
+      .catch(error => console.log('error creating user doc', error));
+    } else {
+      console.log('There is already data at this memory address', doc.data());
+    }
+    // we might want use this reference
+    console.log('returning userRef');
+    return userRef;
+  })
+  .catch( error => {
+    console.log('Error in getting doc from userRef', error);
+    return userRef; //anyway...
+  });
 }
 
 // export firebase;
