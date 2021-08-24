@@ -1,0 +1,32 @@
+.checkout-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  // margin: 20px 0;
+  padding: 10px 0;
+  border-bottom: 1px solid black;
+
+  .checkout-row-item,
+  .image {
+    width: 30%;
+    // border: 1px solid black;
+    text-align: center;
+  }
+
+  .inc-btn,
+  .dec-btn {
+    padding: 0 5px;
+  }
+
+  .remove-btn,
+  .inc-btn,
+  .dec-btn {
+    cursor: pointer;
+  }
+
+  img {
+    width: 150px;
+    height: 200px;
+    border: 1px solid black;
+  }
+}

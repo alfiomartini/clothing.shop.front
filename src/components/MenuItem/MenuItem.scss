@@ -1,0 +1,80 @@
+.menu-item {
+  // min-width: 30%;
+  min-width: 330px;
+  height: 240px;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  margin: 0 7.5px 15px;
+  // avoids that the transformed image (when hovered) overflows its container
+  overflow: hidden;
+  // position: relative;
+
+  .background-image {
+    // inherit from menu-item dimensions
+
+    height: 100%;
+    width: 100%;
+    background-position: center center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    // -webkit-background-size: cover;
+    // -moz-background-size: cover;
+    // -o-background-size: cover;
+    background-size: cover;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    & .background-image {
+      transform: scale(1.1);
+      transition: transform 0.5s ease;
+    }
+
+    & .content {
+      opacity: 0.9;
+    }
+  }
+
+  // &.large {
+  //   height: 380px;
+  // }
+
+  &:first-child {
+    margin-right: 7.5px;
+  }
+
+  &:last-child {
+    margin-left: 7.5px;
+  }
+
+  .content {
+    height: 90px;
+    padding: 0 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    background-color: white;
+    opacity: 0.7;
+    // the element is positioned relative to its first positioned (not static) ancestor element. In this case, the menu item I believe. It is removed from the normal flow of the document, as if it is not even there
+    position: absolute;
+
+    .title {
+      font-weight: bold;
+      margin-bottom: 6px;
+      font-size: 22px;
+      color: #4a4a4a;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      font-weight: lighter;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+  }
+}
