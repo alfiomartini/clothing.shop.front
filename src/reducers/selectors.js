@@ -32,13 +32,12 @@ export const selectCollections = createSelector(
   collections => collections.collections
 )
 
+// The code bellow works because collections (SHOP_DATA) is organized as a large
+// object (actually a map)
 export const selectCollection = collectionName => 
   createSelector(
     selectCollections,
-    collections => collections.find(collection =>{ 
-      console.log('collection data', collection, collectionName)
-      return collection.routeName === collectionName
-    })
+    collections => collections[collectionName]
   )
 
 export const selectCartItems = createSelector(

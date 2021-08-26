@@ -5,11 +5,11 @@ import CollectionPreview from '../CollectionPreview/CollectionPreview';
 
 import {selectCollections} from '../../reducers/selectors';
 
-const CollectionOverview = ({SHOP_DATA}) =>{
+const CollectionOverview = ({shopCollection}) =>{
   return(
     <div className='collection-overview'>
       {
-        SHOP_DATA.map(itemType => (
+        shopCollection.map(itemType => (
           <CollectionPreview key={itemType.id} itemType={itemType} size={4}/>
         ))
       }
@@ -18,7 +18,7 @@ const CollectionOverview = ({SHOP_DATA}) =>{
 }
 
 const mapStateToProps = state => ({
-   SHOP_DATA: selectCollections(state)
+   shopCollection: selectCollections(state)
 });
 
 export default connect(mapStateToProps)(CollectionOverview);

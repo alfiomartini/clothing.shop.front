@@ -7,8 +7,8 @@ import {MenuContainer} from './MenuListStyles';
 import {selectSections} from '../../reducers/selectors';
 
 
-const MenuList = ({SECTIONS}) => {
-  const menuList = SECTIONS.map(item => {
+const MenuList = ({sectionsList}) => {
+  const menuList = sectionsList.map(item => {
     const {id, title, imageUrl, size, path} = item;
     return <MenuItem  key = {id} title={title} 
               imageUrl={imageUrl} size={size}
@@ -18,6 +18,6 @@ const MenuList = ({SECTIONS}) => {
 }
 
 const mapStateToProps = state => ({
-   SECTIONS: selectSections(state)
+   sectionsList: selectSections(state)
 });
 export default connect(mapStateToProps)(MenuList);

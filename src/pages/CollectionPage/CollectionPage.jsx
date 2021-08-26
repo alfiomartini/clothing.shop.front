@@ -1,17 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {selectCollections} from '../../reducers/selectors';
+import {selectCollections, selectCollection} from '../../reducers/selectors';
 import CollectionPreview from '../../components/CollectionPreview/CollectionPreview';
 
 // Perhaps I should normalize data (suing objects instead of arrays) and use hashing 
-// so as to find the required collection
+// so as to find the required collection. Done!
 
-const CollectionPage = ({match, SHOP_DATA}) => {
+const CollectionPage = ({shopCollection, collection}) => {
   // console.log('match, collection', match, collection);
   // console.log('shop data, match', SHOP_DATA, match);
-  const routeName = match.params.collectionName;
-  const item = SHOP_DATA.find(collection => collection.routeName === routeName);
+  const item = collection;
   // console.log('collection', item)
   if (item) {
     return  <CollectionPreview itemType={item} size={10}/> 
@@ -21,15 +20,11 @@ const CollectionPage = ({match, SHOP_DATA}) => {
   }
 }
 
-// const mapStateToProps = (state, ownProps) => {
-//   console.log('own props', ownProps);
-//   return ({
-//     collection: selectCollection(ownProps.match.params.collectionName)(state)
-//   });
-// } 
-
-const mapStateToProps = state => ({
-  SHOP_DATA: selectCollections(state)
+// https://stackoverflow.com/questions/47647070/what-is-ownprops-in-react-redux
+// ownProps is the name redux gives to React props
+const mapStateToProps = (state, ownProps) => ({
+  shopCollection: selectCollections(state),
+  collection: selectCollection(ownProps.match.params.collectionName)(state)
 });
 
 export default connect(mapStateToProps)(CollectionPage)
