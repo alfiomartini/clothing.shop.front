@@ -32,6 +32,11 @@ export const selectCollections = createSelector(
   collections => collections.collections
 )
 
+export const selectCollectionsArray = createSelector(
+  selectCollections,
+  collections => Object.keys(collections).map(key => collections[key])
+)
+
 // The code bellow works because collections (SHOP_DATA) is organized as a large
 // object (actually a map)
 export const selectCollection = collectionName => 

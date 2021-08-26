@@ -8,10 +8,7 @@ import CollectionPreview from '../../components/CollectionPreview/CollectionPrev
 // so as to find the required collection. Done!
 
 const CollectionPage = ({shopCollection, collection}) => {
-  // console.log('match, collection', match, collection);
-  // console.log('shop data, match', SHOP_DATA, match);
   const item = collection;
-  // console.log('collection', item)
   if (item) {
     return  <CollectionPreview itemType={item} size={10}/> 
   }
