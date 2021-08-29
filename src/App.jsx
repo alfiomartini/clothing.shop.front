@@ -13,7 +13,7 @@ import SignInUpPage from './pages/SignInUpPage/SignInUpPage.jsx';
 import HomePage from './pages/HomePage/HomePage.jsx';
 import CheckoutPage from './pages/CheckoutPage/CheckoutPage.jsx';
 
-import {auth, createUserProfileDoc, addCollectionAndDocs} from './firebase/firebase.utils';
+import {auth, createUserProfileDoc} from './firebase/firebase.utils';
 
 import {connect} from 'react-redux';
 import {setCurrentUser} from './reducers/actions';
@@ -65,12 +65,12 @@ class App extends React.Component{
         this.props.updateUser(null);
       }
     });
-    const fileteredCollection = this.props.collectionsArray.map(({title, items})=>{
-      return {title, items}
-    });
-    addCollectionAndDocs('collections', fileteredCollection)
-    .then(()=>console.log('Collections added to firestore'))
-    .catch(()=>console.log('Error in batch transaction (collections)'));
+    // const fileteredCollection = this.props.collectionsArray.map(({title, items})=>{
+    //   return {title, items}
+    // });
+    // addCollectionAndDocs('collections', fileteredCollection)
+    // .then(()=>console.log('Collections added to firestore'))
+    // .catch(()=>console.log('Error in batch transaction (collections)'));
   }
 
   componentWillUnmount(){
