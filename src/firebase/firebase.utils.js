@@ -76,4 +76,19 @@ export const createUserProfileDoc = (userAuth, additional) => {
   });
 }
 
+export const addCollectionAndDocs = (collectionKey, collectionDocs) =>{
+  const collectionRef = firestore.collection(collectionKey);
+  // transaction object
+  // https://firebase.google.com/docs/firestore/manage-data/transactions
+  const batch = firestore.batch(); 
+  
+  collectionDocs.forEach( obj => {
+    // generates a new reference
+    const newDocRef = collectionRef.doc();
+    batch.set(newDocRef, obj)
+  });
+  // returns a promise
+  return batch.commit();
+}
+
 // export firebase;
