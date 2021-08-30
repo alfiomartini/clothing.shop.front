@@ -20,7 +20,7 @@ class SignIn extends React.Component{
 
   // special case of handleChange
   setPassword = (event) =>{
-    console.log(event);
+    // console.log(event);
     this.setState({password:event.target.value})
   }
 

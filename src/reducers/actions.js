@@ -4,7 +4,12 @@ import {TOGGLE_CART_HIDDEN} from './action_types';
 import {ADD_CART_ITEM} from './action_types';
 import {REMOVE_CART_ITEM} from './action_types';
 import {DEC_ITEM_COUNT} from './action_types';
+import {UPDATE_SHOP_DATA} from './action_types';
 
+export const updateShopData = collection => ({
+  type:UPDATE_SHOP_DATA,
+  payload:collection
+});
 
 export const setCurrentUser = user => ({
   type:SET_CURRENT_USER,

@@ -7,3 +7,5 @@ export const ADD_CART_ITEM = 'ADD_CART_ITEM';
 export const DEC_ITEM_COUNT = 'DEC_ITEM_COUNT';
 
 export const REMOVE_CART_ITEM = 'REMOVE_CART_ITEM';
+
+export const UPDATE_SHOP_DATA = 'UPDATE_SHOP_DATA';

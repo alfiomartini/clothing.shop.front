@@ -91,4 +91,29 @@ export const addCollectionAndDocs = (collectionKey, collectionDocs) =>{
   return batch.commit();
 }
 
+// collection is an array of docs from firestore snaphot on 
+// 'collections' collection
+export const transformCollectionToMap = (collection)=>{
+  const docsArray = collection.map(doc => {
+    const {items, title} = doc.data();
+    const routeName = title.toLowerCase();
+    const id = doc.id;
+    return {
+      id,
+      routeName,
+      title,
+      items
+    }
+  });
+  const docsMap = docsArray.reduce((map, doc) => {
+    return {...map, [doc.routeName]:doc};
+  }, {});
+  //....
+  // map[doc.title] = doc; return map
+  //....
+  // console.log('docsArray', docsArray);
+  // console.log('docsMap', docsMap);
+  return docsMap;
+}
+
 // export firebase;
