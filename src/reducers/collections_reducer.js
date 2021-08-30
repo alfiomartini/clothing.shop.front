@@ -9,7 +9,7 @@ const INITIAL_STATE = {
 const collectionsReducer = (state=INITIAL_STATE, action) => {
   switch (action.type){
     case UPDATE_SHOP_DATA: 
-      console.log('Shop Data Updated');
+      // console.log('Shop Data Updated');
       return {
         ...state,
         collections:action.payload
