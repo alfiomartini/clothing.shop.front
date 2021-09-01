@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
  
 import CollectionPreview from '../CollectionPreview/CollectionPreview';
 
-import {selectCollections, selectCollectionsArray} from '../../reducers/selectors';
+import {selectCollectionsArray} from '../../reducers/selectors';
 
 const CollectionOverview = ({collectionsArray}) =>{
   return(
@@ -18,7 +18,7 @@ const CollectionOverview = ({collectionsArray}) =>{
 }
 
 const mapStateToProps = state => ({
-   shopCollection: selectCollections(state),
+  //  shopCollection: selectCollections(state),
    collectionsArray: selectCollectionsArray(state)
 });
 

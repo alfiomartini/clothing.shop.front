@@ -7,11 +7,19 @@ import {addCartItem} from '../../reducers/actions';
 import {CollectionBox, InvisibleBtn, Preview, 
         PreviewItem, Description, Image} from './CollectionPreviewStyles';
 
-const CollectionPreview = ({itemType, addItem, size}) => {
-  const {items, title} = itemType; 
+import {withRouter} from 'react-router-dom';
+
+const CollectionPreview = ({itemType, addItem, size, history, match}) => {
+  const {items, title,routeName} = itemType; 
+  // console.log('match.url, routeName', match.url, routeName)
+  const path = `${match.url}/${routeName}`;
+  const updatePath = () => {
+    // console.log(match.url);
+    if (match.url === '/shop') history.push(path);
+  }
   return(
     <CollectionBox>
-      <h1 className="title">{title.toUpperCase()}</h1>
+      <h1 className="title" onClick={updatePath}>{title.toUpperCase()}</h1>
       <Preview>
         {
           items.filter((item, index) => index < Number(size))
@@ -39,4 +47,4 @@ const CollectionPreview = ({itemType, addItem, size}) => {
 const mapDispatchToProps = dispatch => ({
   addItem: (item) => dispatch(addCartItem(item))
 })
-export default connect(null, mapDispatchToProps)(CollectionPreview);
+export default connect(null, mapDispatchToProps)(withRouter(CollectionPreview));

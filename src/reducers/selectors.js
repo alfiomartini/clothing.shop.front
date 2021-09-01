@@ -27,6 +27,7 @@ export const selectSections = createSelector(
   sections => sections.sections
 )
 
+// select colections retorns a map (a huge object)
 export const selectCollections = createSelector(
   getCollections,
   collections => collections.collections

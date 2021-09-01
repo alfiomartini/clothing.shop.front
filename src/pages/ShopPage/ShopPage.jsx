@@ -19,6 +19,8 @@ class ShopPage extends React.Component{
     })
   }
   render(){
+    // A match object contains information about how a <Route path> matched the URL
+    // https://reactrouter.com/web/api/match
     const {match} = this.props;
     return(
       <div className='shop-page'>

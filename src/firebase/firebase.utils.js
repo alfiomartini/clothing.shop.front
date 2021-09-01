@@ -44,7 +44,7 @@ export const createUserProfileDoc = (userAuth, additional) => {
   // call ensures userAuth is defined 
 
   const userRef = firestore.doc(`/users/${userAuth.uid}`);
-  // snaphot is the object pointed to by userRef
+  // snaphot doc is the object pointed to by userRef
   return userRef.get()
   .then(doc => {
     if (!doc.exists){

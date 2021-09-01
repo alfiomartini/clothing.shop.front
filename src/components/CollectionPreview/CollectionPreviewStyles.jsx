@@ -4,6 +4,11 @@ import {InvertedBtn} from '../CustomButton/CustomButtonStyles';
 
 export const CollectionBox = styled.div`
   padding: 20px;
+
+  h1:hover{
+    cursor:pointer;
+    color:blue;
+  }
 `;
 
 export const Preview = styled.div`
