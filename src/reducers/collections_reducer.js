@@ -2,7 +2,7 @@
 import {UPDATE_SHOP_DATA} from './action_types.js';
 
 const INITIAL_STATE = {
-  collections:[]
+  collections:null
 }
 
 // console.log('INITIAL state', INITIAL_STATE)

@@ -33,6 +33,7 @@ export const selectCollections = createSelector(
   collections => collections.collections
 )
 
+// takes care when the collection is null (initial state)
 export const selectCollectionsArray = createSelector(
   selectCollections,
   collections => collections? Object.keys(collections).map(key => collections[key]):[]
@@ -40,10 +41,11 @@ export const selectCollectionsArray = createSelector(
 
 // The code bellow works because collections (SHOP_DATA) is organized as a large
 // object (actually a map)
+// takes care when the collection is null (initial state)
 export const selectCollection = collectionName => 
   createSelector(
     selectCollections,
-    collections => collections[collectionName]
+    collections => collections? collections[collectionName] : null
   )
 
 export const selectCartItems = createSelector(
