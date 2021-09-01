@@ -10,11 +10,9 @@ import {CollectionBox, InvisibleBtn, Preview,
 import {withRouter} from 'react-router-dom';
 
 const CollectionPreview = ({itemType, addItem, size, history, match}) => {
-  const {items, title,routeName} = itemType; 
-  // console.log('match.url, routeName', match.url, routeName)
+  const {items, title, routeName} = itemType; 
   const path = `${match.url}/${routeName}`;
   const updatePath = () => {
-    // console.log(match.url);
     if (match.url === '/shop') history.push(path);
   }
   return(

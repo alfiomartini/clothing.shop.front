@@ -36,10 +36,9 @@ class App extends React.Component{
   componentDidMount(){
     this.unsubscribeFromAuth = auth.onAuthStateChanged (userAuth => {
       // if there is an authenticated user
-      // console.log('app userAuth', userAuth);
       if (userAuth){
         // fetch  a reference to the user from the db (existing or created)
-       // onSnapshot queries the 'exists' property of snapShot
+        // onSnapshot queries the 'exists' property of snapShot
         // it must be true, since we have an authUser and hence data (query.data()) query = doc
         // https://firebase.google.com/docs/firestore/query-data/listen
         createUserProfileDoc(userAuth)
@@ -65,10 +64,10 @@ class App extends React.Component{
         this.props.updateUser(null);
       }
     });
-    // const fileteredCollection = this.props.collectionsArray.map(({title, items})=>{
+    // const filteredCollection = this.props.collectionsArray.map(({title, items})=>{
     //   return {title, items}
     // });
-    // addCollectionAndDocs('collections', fileteredCollection)
+    // addCollectionAndDocs('collections', filteredCollection)
     // .then(()=>console.log('Collections added to firestore'))
     // .catch(()=>console.log('Error in batch transaction (collections)'));
   }
@@ -114,8 +113,6 @@ const mapStateToProps = state => ({
 
 //redux stuff
 const mapDispatchToProps = dispatch => ({
-  // update user is the name of the property that is
-  // added to the component
    updateUser: user => dispatch(setCurrentUser(user))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(App);
