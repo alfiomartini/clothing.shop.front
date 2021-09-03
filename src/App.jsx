@@ -34,6 +34,9 @@ class App extends React.Component{
 
   unsubscribeFromAuth = null;
   componentDidMount(){
+    // auth.onAuthStateChanged is an observer of an infinite stream
+    // of events: login -> logout -> login -> logout -> login -> login, etc
+    // See: pattern observable/observer in js
     this.unsubscribeFromAuth = auth.onAuthStateChanged (userAuth => {
       // if there is an authenticated user
       if (userAuth){
@@ -64,6 +67,7 @@ class App extends React.Component{
         this.props.updateUser(null);
       }
     });
+    //  the code bellow as used to add SHOPDATA to the firestore db
     // const filteredCollection = this.props.collectionsArray.map(({title, items})=>{
     //   return {title, items}
     // });
@@ -105,6 +109,7 @@ const mapStateToProps = state => ({
   collectionsArray:selectCollectionsArray(state)
 })
 
+// not memoized selection
 // const mapStateToProps = state => ({
 //   currentUser:state.user.currentUser
 // })

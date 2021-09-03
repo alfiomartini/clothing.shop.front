@@ -111,8 +111,6 @@ export const transformCollectionToMap = (collection)=>{
   //....
   // map[doc.title] = doc; return map
   //....
-  // console.log('docsArray', docsArray);
-  // console.log('docsMap', docsMap);
   return docsMap;
 }
 
