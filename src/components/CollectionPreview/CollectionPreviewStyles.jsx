@@ -5,9 +5,12 @@ import {InvertedBtn} from '../CustomButton/CustomButtonStyles';
 export const CollectionBox = styled.div`
   padding: 20px;
 
+  h1 {
+    color:lightgreen;
+  }
   h1:hover{
     cursor:pointer;
-    color:blue;
+    color:whitesmoke;
   }
 `;
 
@@ -41,6 +44,7 @@ export const Description = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  color:whitesmoke;
 `;
 
 export const InvisibleBtn = styled(InvertedBtn)`
