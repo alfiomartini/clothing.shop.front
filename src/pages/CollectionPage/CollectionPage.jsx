@@ -7,7 +7,7 @@ import CollectionPreview from '../../components/CollectionPreview/CollectionPrev
 // Perhaps I should normalize data (suing objects instead of arrays) and use hashing 
 // so as to find the required collection. Done!
 
-const CollectionPage = ({shopCollection, collection}) => {
+const CollectionPage = ({collection}) => {
   const item = collection;
   if (item) {
     return  <CollectionPreview itemType={item} size={10}/> 

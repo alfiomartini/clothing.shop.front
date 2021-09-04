@@ -1,5 +1,5 @@
 import React from 'react';
-import {ReactComponent as ShoppingIcon} from '../../assets/shopping-bag.svg';
+import {ReactComponent as ShoppingIcon} from '../../assets/shopping-bag-white.svg';
 import {toggleCartHidden} from '../../reducers/actions';
 import {connect} from 'react-redux';
 import {selectItemsCount} from '../../reducers/selectors';
@@ -10,7 +10,7 @@ const CartIcon = ({toggleCart, itemsNum}) => {
   return (
   <div className="cart-icon" onClick={toggleCart}>
     <ShoppingIcon className='shopping-icon'/>
-    <span className='item-count'>{itemsNum}</span>
+    <span className='item-count' style={{color:"whitesmoke"}}>{itemsNum}</span>
   </div>
   )
 }

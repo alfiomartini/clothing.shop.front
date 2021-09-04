@@ -1,7 +1,7 @@
 import React from 'react';
 // import {Link} from 'react-router-dom';
 
-import {ReactComponent as Logo} from '../../assets/crown.svg';
+// import {ReactComponent as Logo} from '../../assets/crown.svg';
 
 import {auth} from '../../firebase/firebase.utils';
 
@@ -32,7 +32,7 @@ const NavHeader = ({currentUser, hidden}) => {
   return (
     <NavContainer>
       <LogoBox to='/' >
-        <Logo />
+        <h2> Clothing Shop</h2>
       </LogoBox>
       <Options>
         <LinkBox to='/shop'>
