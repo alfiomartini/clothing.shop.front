@@ -1,7 +1,7 @@
 import styled, {css} from 'styled-components';
 
 const basicButton = css`
-  min-width: 165px;
+  // min-width: 165px;
   width: auto;
   height: 50px;
   letter-spacing: 0.5px;
