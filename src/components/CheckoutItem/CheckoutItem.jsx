@@ -5,7 +5,7 @@ import {removeCartItem} from '../../reducers/actions';
 import {addCartItem} from '../../reducers/actions';
 import {decItemCount} from '../../reducers/actions';
 
-import '../../styles/CheckoutItem.scss';
+import './CheckoutItem.scss';
 
 const CheckoutItem = ({item, removeItem, addToCart, decCount}) => {
   const {name, price, count, imageUrl} = item;

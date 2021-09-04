@@ -4,13 +4,13 @@ import {toggleCartHidden} from '../../reducers/actions';
 import {connect} from 'react-redux';
 import {selectItemsCount} from '../../reducers/selectors';
 
-import '../../styles/CartIcon.scss';
+import './CartIcon.scss';
 
 const CartIcon = ({toggleCart, itemsNum}) => {
   return (
   <div className="cart-icon" onClick={toggleCart}>
     <ShoppingIcon className='shopping-icon'/>
-    <span className='item-count' style={{color:"whitesmoke"}}>{itemsNum}</span>
+    <span className='item-count'>{itemsNum}</span>
   </div>
   )
 }

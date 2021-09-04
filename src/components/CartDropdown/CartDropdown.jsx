@@ -2,7 +2,7 @@ import React from 'react';
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import '../../styles/Cart-Dropdown.scss';
+import './Cart-Dropdown.scss';
 
 import CustomButtom from '../CustomButton/CustomButton';
 import CartItem from '../CartItem/CartItem';

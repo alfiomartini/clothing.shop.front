@@ -1,5 +1,4 @@
 import React from 'react';
-// import '../../styles/CollectionPreview.scss';
 
 import {connect} from 'react-redux';
 import {addCartItem} from '../../reducers/actions';

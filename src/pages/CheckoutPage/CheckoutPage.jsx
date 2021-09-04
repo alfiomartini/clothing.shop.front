@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux'
 
-import '../../styles/CheckoutPage.scss';
+import './CheckoutPage.scss';
 
 import CheckoutItem from '../../components/CheckoutItem/CheckoutItem';
 
