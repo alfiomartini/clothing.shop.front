@@ -8,10 +8,11 @@ import storage from 'redux-persist/lib/storage'
 
 import rootReducer from './root_reducer';
 import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 
 
 
-const middleWare = [];
+const middleWare = [thunk];
 
 if (process.env.NODE_ENV === 'development'){
   middleWare.push(logger);
