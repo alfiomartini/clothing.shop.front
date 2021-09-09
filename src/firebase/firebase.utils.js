@@ -1,6 +1,9 @@
 // Firebase App (the core Firebase SDK) is always required and
 // must be listed before other Firebase SDKs
 // Software development kit
+
+// https://firebase.google.com/docs/firestore/security/rules-conditions
+
 import firebase from 'firebase/app';
 // cloud database
 import 'firebase/firestore';

@@ -40,6 +40,7 @@ class App extends React.Component{
     this.unsubscribeFromAuth = auth.onAuthStateChanged (userAuth => {
       // if there is an authenticated user
       if (userAuth){
+        // console.log('userAuth', userAuth);
         // fetch  a reference to the user from the db (existing or created)
         // onSnapshot queries the 'exists' property of snapShot
         // it must be true, since we have an authUser and hence data (query.data()) query = doc
