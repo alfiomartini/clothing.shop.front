@@ -2,6 +2,9 @@
   "name": "clothing.shop",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=14"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -18,6 +21,7 @@
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
+    "server": "^1.0.35",
     "styled-components": "^5.3.0"
   },
   "scripts": {
