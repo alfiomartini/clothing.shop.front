@@ -11,6 +11,10 @@ class StripeCheckoutButton extends React.Component {
     }
   }
 
+
+  // this version of the server is wrong, because I am fetching the publishable key
+  // (which is public), instead of fetching the secret key (which must be hidden in the server)
+
   fetchStripe = () => {
     return  fetch(URL_DEV)
     .then(resp => resp.json())
