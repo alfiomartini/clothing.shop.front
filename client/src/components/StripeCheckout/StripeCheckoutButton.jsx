@@ -1,59 +1,27 @@
 import React from 'react';
 import StripeCheckout from 'react-stripe-checkout'
 
-const URL_DEV = 'http://localhost:3100/stripe';
+const StripeCheckoutButton = ({price}) =>{
+  const priceForStripe = price * 100;
+  const publishableKey = 'pk_test_51IiskwEgHijewZB6RGMR7aItlDLG4DmwSGAIpfByaeL8WWBepd22G14Kgwuvb4rRht2QX2c6LmELKdu1Q8TYFfgv00q3nDrRFu';
 
-class StripeCheckoutButton extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      stripeKey:null
-    }
-  }
-
-
-  // this version of the server is wrong, because I am fetching the publishable key
-  // (which is public), instead of fetching the secret key (which must be hidden in the server)
-
-  fetchStripe = () => {
-    return  fetch(URL_DEV)
-    .then(resp => resp.json())
-    .then(stripeKey => {
-      this.setState({stripeKey:stripeKey}, ()=>{
-      console.log('stripe key fetched from server')
-      })
-    })
-    .catch(error => console.log('stripe error', error.message))
-  }
-  componentDidMount(){
-    this.fetchStripe();
-  }
-
-
-  onToken = token => {
+  const onToken = token => {
     console.log(token);
     console.log('Payment Successful!')
   }
 
-  render(){
-    const {price} = this.props;
-    const stripeKey = this.state.stripeKey;
-    const priceForStripe = price * 100;
-    console.log('stripe key fetched?', stripeKey!== null);
-    return !stripeKey? null : (
-        <StripeCheckout 
-          label = 'Pay Now'
-          name = 'Clothing Shop Ltd.'
-          billingAddress
-          shippingAddress
-          description = {`Your total price is $${price}`}
-          priceForStripe = {priceForStripe}
-          token = {this.onToken}
-          stripeKey = {stripeKey}
-        />
-      )
-  }
+  return (
+    <StripeCheckout 
+      label = 'Pay Now'
+      name = 'Clothing Shop Ltd.'
+      billingAddress
+      shippingAddress
+      description = {`Your total price is $${price}`}
+      priceForStripe = {priceForStripe}
+      token = {onToken}
+      stripeKey = {publishableKey}
+    />
+  )
 }
- 
 
 export default StripeCheckoutButton;
