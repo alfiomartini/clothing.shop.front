@@ -11,6 +11,8 @@ import {selectCartItems} from '../../reducers/selectors';
 import {toggleCartHidden} from '../../reducers/actions';
 
 // https://stackoverflow.com/questions/53539314/what-is-withrouter-for-in-react-router-dom
+
+
 const CartDropdown = ({cartItems, history, toggleCart}) => {
   // console.log('cartItems',  cartItems);
   const cartItemList = cartItems.map(item => {
