@@ -1,6 +1,9 @@
 import React from 'react';
 import StripeCheckout from 'react-stripe-checkout'
 
+// This was an experiment with a rudimentary server, that serves up 
+//  the publick stripe key using the fetch promise api
+
 const URL_DEV = 'http://localhost:3100/stripe';
 
 class StripeCheckoutButton extends React.Component {
