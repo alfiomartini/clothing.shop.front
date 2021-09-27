@@ -25,11 +25,11 @@ class App extends React.Component{
     this.state = {currentUser:null}
   }
 
-  updateState = userAuth => {
-    // console.log('userAuth', userAuth);
-    const {email, displayName, uid} = userAuth;
-    this.setState({currentUser:{email, displayName, uid}});
-  }
+  // updateState = userAuth => {
+  //   // console.log('userAuth', userAuth);
+  //   const {email, displayName, uid} = userAuth;
+  //   this.setState({currentUser:{email, displayName, uid}});
+  // }
   
 
   unsubscribeFromAuth = null;
@@ -82,7 +82,7 @@ class App extends React.Component{
   }
   render(){
     // console.log('app store', store.getState());
-    // console.log('app local state', this.state);
+    console.log('app local state', this.state);
     return (
       <div>
         <NavHeader/>
