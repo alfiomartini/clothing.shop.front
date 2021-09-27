@@ -8,7 +8,7 @@ const SignInUpPage = (props) => {
   return (
     <div className="sign-in-sign-up">
       <SignIn />
-      <SignUp updateAppState = {props.updateAppState} />
+      <SignUp />
     </div>
   )
 }

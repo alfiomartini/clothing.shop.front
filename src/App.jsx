@@ -85,7 +85,7 @@ class App extends React.Component{
           {
           !(this.props.currentUser) &&
              <Route exact path='/signin' 
-             render = {props => (<SignInUpPage {...this.props} updateAppState = {this.updateState} />)}
+             render = {props => (<SignInUpPage {...this.props} />)}
              />
           }
           <Route path='/checkout' component={CheckoutPage}/>
