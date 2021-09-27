@@ -25,13 +25,6 @@ class App extends React.Component{
     this.state = {currentUser:null}
   }
 
-  // updateState = userAuth => {
-  //   // console.log('userAuth', userAuth);
-  //   const {email, displayName, uid} = userAuth;
-  //   this.setState({currentUser:{email, displayName, uid}});
-  // }
-  
-
   unsubscribeFromAuth = null;
   componentDidMount(){
     // auth.onAuthStateChanged is an observer of an infinite stream
