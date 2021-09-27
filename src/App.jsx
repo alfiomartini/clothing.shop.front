@@ -47,7 +47,7 @@ class App extends React.Component{
               }
             });
             //redux update
-            this.props.updateUser({
+            this.props.setCurrentUser({
               id: doc.id,
               ...doc.data()
             });
@@ -58,7 +58,7 @@ class App extends React.Component{
         // user is signed out
         console.log('No user is signed in');
         this.setState({currentUser:null});
-        this.props.updateUser(null);
+        this.props.setCurrentUser(null);
       }
     });
     //  the code bellow as used to add SHOPDATA to the firestore db
@@ -112,6 +112,6 @@ const mapStateToProps = state => ({
 
 //redux stuff
 const mapDispatchToProps = dispatch => ({
-   updateUser: user => dispatch(setCurrentUser(user))
+   setCurrentUser: user => dispatch(setCurrentUser(user))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(App);
