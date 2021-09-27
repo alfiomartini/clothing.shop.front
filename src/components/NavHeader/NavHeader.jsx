@@ -15,13 +15,18 @@ import {LogoBox, NavContainer, Options, LinkBox, OptionDiv} from './NavHeaderSty
 import {selectCartHidden} from '../../reducers/selectors';
 import {selectCurrentUser} from '../../reducers/selectors'
 
-const NavHeader = ({currentUser, hidden}) => {
+const NavHeader = ({currentUser, hidden, unsubscribe}) => {
+
+  const signOut = () => {
+    // unsubscribe();
+    auth.signOut();
+  }
 
   const renderSignOut = () => {
     // console.log('current user', currentUser)
     if (currentUser){
       return (
-        <OptionDiv onClick={() => auth.signOut()}>
+        <OptionDiv onClick={() => signOut()}>
          Sign Out
         </OptionDiv>)
     } else {

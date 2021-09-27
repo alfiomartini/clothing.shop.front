@@ -33,7 +33,7 @@ class App extends React.Component{
     this.unsubscribeFromAuth = auth.onAuthStateChanged (userAuth => {
       // if there is an authenticated user
       if (userAuth){
-        // console.log('userAuth', userAuth);
+        console.log('userAuth', userAuth);
         // fetch  a reference to the user from the db (existing or created)
         // onSnapshot queries the 'exists' property of snapShot
         // it must be true, since we have an authUser and hence data (query.data()) query = doc
@@ -60,7 +60,7 @@ class App extends React.Component{
         this.setState({currentUser:null});
         this.props.setCurrentUser(null);
       }
-    });
+    }, error => console.log(error));
     //  the code bellow as used to add SHOPDATA to the firestore db
     // const filteredCollection = this.props.collectionsArray.map(({title, items})=>{
     //   return {title, items}
@@ -78,7 +78,7 @@ class App extends React.Component{
     console.log('app local state', this.state);
     return (
       <div>
-        <NavHeader/>
+        <NavHeader unsubscribe = {this.unsubscribeFromAuth}/>
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage}/>
