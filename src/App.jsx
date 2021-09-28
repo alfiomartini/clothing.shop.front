@@ -41,15 +41,10 @@ class App extends React.Component{
         createUserProfileDoc(userAuth)
         .then(userRef => {
           userRef.onSnapshot(doc => {
-            this.setState({currentUser:{
-                id: doc.id,
-                ...doc.data() //json data converted to js
-              }
-            });
             //redux update
             this.props.setCurrentUser({
               id: doc.id,
-              ...doc.data()
+              ...doc.data() //json data converted to js
             });
           })
         })
@@ -57,7 +52,6 @@ class App extends React.Component{
       } else {
         // user is signed out
         console.log('No user is signed in');
-        this.setState({currentUser:null});
         this.props.setCurrentUser(null);
       }
     }, error => console.log(error));

@@ -46,6 +46,7 @@ export const createUserProfileDoc = (userAuth, additional) => {
   if (!userAuth) return Promise.resolve(null);//never executed, because the 
   // call ensures userAuth is defined 
 
+  // creates a userRef if new, returns userRef if already exists
   const userRef = firestore.doc(`/users/${userAuth.uid}`);
   // snaphot doc is the object pointed to by userRef
   return userRef.get()
@@ -67,7 +68,7 @@ export const createUserProfileDoc = (userAuth, additional) => {
       })
       .catch(error => console.log('error creating user doc', error));
     } else {
-      console.log('There is already data at this memory address', doc.data());
+      console.log('There is already a document at this memory address', doc.data());
     }
     // we might want use this reference
     console.log('returning userRef');
