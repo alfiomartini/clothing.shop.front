@@ -6,6 +6,11 @@
   margin: 15px auto;
   font-size: 16px;
 
+  .stripe-checkout {
+    // 100% of its parent (.checkout-page)
+    width: 100%;
+  }
+
   .card-message {
     color: whitesmoke;
     text-align: center;

@@ -11,16 +11,25 @@ const StripeCheckoutButton = ({price}) =>{
   }
 
   return (
-    <StripeCheckout 
-      label = 'Pay Now'
-      name = 'Clothing Shop Ltd.'
-      billingAddress
-      shippingAddress
-      description = {`Your total price is $${price}`}
-      priceForStripe = {priceForStripe}
-      token = {onToken}
-      stripeKey = {publishableKey}
-    />
+    <div>
+      <StripeCheckout 
+        label = 'Pay Now'
+        name = 'Clothing Shop Ltd.'
+        billingAddress
+        shippingAddress
+        description = {`Your total price is $${price}`}
+        priceForStripe = {priceForStripe}
+        token = {onToken}
+        stripeKey = {publishableKey}
+        className='stripe-checkout' />
+      <div className='card-message'>
+        <h3>Please, use the following test credit card for  payments 
+        </h3>
+        <h3>
+          Visa: 4242 4242 4242 4242 EXP: 09/2025 CVC:555
+        </h3>
+      </div>
+    </div>
   )
 }
 
