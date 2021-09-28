@@ -18,7 +18,7 @@ import {selectCurrentUser} from '../../reducers/selectors'
 const NavHeader = ({currentUser, hidden, unsubscribe}) => {
 
   const signOut = () => {
-    // unsubscribe();
+    // unsubscribe(); is this needed?
     auth.signOut();
   }
 

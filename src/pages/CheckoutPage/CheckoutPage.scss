@@ -11,6 +11,23 @@
     width: 100%;
   }
 
+  .button-signin {
+    background-color: blueviolet;
+    padding: 8px 0;
+    border-radius: 5px;
+    border: none;
+    color: whitesmoke;
+    font-family: "Times New Roman", Times, serif !important;
+    font-size: 18px;
+    font-variant: small-caps;
+    letter-spacing: 1px;
+    font-weight: 400px;
+  }
+
+  .button-signin:hover {
+    background-color: whitesmoke;
+    color: blueviolet;
+  }
   .card-message {
     color: whitesmoke;
     text-align: center;

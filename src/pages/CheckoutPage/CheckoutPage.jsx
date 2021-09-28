@@ -5,14 +5,23 @@ import './CheckoutPage.scss';
 
 import CheckoutItem from '../../components/CheckoutItem/CheckoutItem';
 
-import {selectCartItems} from '../../reducers/selectors';
+import {selectCartItems, selectCurrentUser} from '../../reducers/selectors';
 import {checkoutTotal} from '../../reducers/reducer_utils';
 import StripeCheckoutButton from '../../components/StripeCheckout/StripeCheckoutButton';
 
+import { withRouter } from 'react-router-dom';
 
+const CheckoutPage = ({cartItems, currentUser, history}) => {
 
-const CheckoutPage = ({cartItems}) => {
-  const total = checkoutTotal(cartItems)
+  const ButtonSignIn = () => (
+    <button className="button-signin"
+      onClick = {() =>history.push('/signin')}>
+      please sign in before checking out
+    </button>
+  )
+
+  const total = checkoutTotal(cartItems);
+  console.log('Current User', currentUser);
   return (
     <div className='checkout-page'>
       <div className="checkout-header">
@@ -32,12 +41,14 @@ const CheckoutPage = ({cartItems}) => {
       <div className='checkout-total'>
         Total: ${total}
       </div>
-      <StripeCheckoutButton price={total} />
+      { currentUser && <StripeCheckoutButton price={total} /> }
+      {!currentUser && <ButtonSignIn />}
     </div>
   )
 }
 
 const mapStateToProps = state => ({
-  cartItems:selectCartItems(state)
+  cartItems:selectCartItems(state),
+  currentUser: selectCurrentUser(state)
 })
-export default connect(mapStateToProps)(CheckoutPage);
+export default withRouter(connect(mapStateToProps)(CheckoutPage));
