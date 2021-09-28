@@ -42,18 +42,19 @@ provider.setCustomParameters({prompt:'select_account'});
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 // https://firebase.google.com/docs/firestore/query-data/get-data
-export const createUserProfileDoc = (userAuth, additional) => {
-  if (!userAuth) return Promise.resolve(null);//never executed, because the 
+export const createUserProfileDoc = (user, additional) => {
+  if (!user) return Promise.resolve(null);//never executed, because the 
   // call ensures userAuth is defined 
 
   // creates a userRef if new, returns userRef if already exists
-  const userRef = firestore.doc(`/users/${userAuth.uid}`);
+  const userRef = firestore.doc(`/users/${user.uid}`);
   // snaphot doc is the object pointed to by userRef
   return userRef.get()
   .then(doc => {
     if (!doc.exists){
       // let us save the userAuth info in the database
-      const { displayName, email } = userAuth;
+      const { displayName, email } = user;
+      console.log('displayName, email', displayName, email);
       const createdAt = new Date();
       // creates doc in the db
       userRef.set({

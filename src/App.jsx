@@ -20,12 +20,9 @@ import {setCurrentUser} from './reducers/actions';
 import {selectCurrentUser, selectCollectionsArray} from './reducers/selectors';
 
 class App extends React.Component{
-  constructor(props){
-    super(props);
-    this.state = {currentUser:null}
-  }
 
   unsubscribeFromAuth = null;
+
   componentDidMount(){
     // auth.onAuthStateChanged is an observer of an infinite stream
     // of events: login -> logout -> login -> logout -> login -> login, etc
@@ -33,11 +30,14 @@ class App extends React.Component{
     this.unsubscribeFromAuth = auth.onAuthStateChanged (userAuth => {
       // if there is an authenticated user
       if (userAuth){
-        console.log('userAuth', userAuth);
+        console.log('Auth state changed...');
         // fetch  a reference to the user from the db (existing or created)
-        // onSnapshot queries the 'exists' property of snapShot
-        // it must be true, since we have an authUser and hence data (query.data()) query = doc
         // https://firebase.google.com/docs/firestore/query-data/listen
+        // an authenticated user must be in the db already, so
+        //  the following just returns the db reference
+        //  if we hit here by a createUserWithEmailAndPassword 
+        //  then the first document
+        // of this userRef will be created with displayName null
         createUserProfileDoc(userAuth)
         .then(userRef => {
           userRef.onSnapshot(doc => {
@@ -69,7 +69,6 @@ class App extends React.Component{
   }
   render(){
     // console.log('app store', store.getState());
-    console.log('app local state', this.state);
     return (
       <div>
         <NavHeader unsubscribe = {this.unsubscribeFromAuth}/>

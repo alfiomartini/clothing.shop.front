@@ -25,7 +25,6 @@ class SignUp extends React.Component{
   handleSubmit = async (event) => {
     event.preventDefault();
     const {name, email, password, confirm} = this.state;
-    console.log('sign up state', this.state);
     if (password !== confirm){
       alert ('Passwords do not match');
       return;
@@ -33,19 +32,11 @@ class SignUp extends React.Component{
     try {
       // https://firebase.google.com/docs/auth/web/password-auth
       // https://stackoverflow.com/questions/37890519/firebase-storage-sample-with-400-error
+      // the following action causes auth state change (I think)
       const userCredential = await auth.createUserWithEmailAndPassword(email, password);
       const userSignedUp = userCredential.user;
-      console.log('userSignedUp', userSignedUp);
-
-      // update dispaly name of authenticated user
-      // the updateState method is passed down from the App component
-      // userSignedUp.updateProfile({displayName:this.state.name})
-      // .then (() => this.props.updateAppState(userSignedUp))
-      // .then(()=> console.log('profile updated successfully'))
-      // .catch(error => console.log(error))
-      
-      // console.log('user signed up', userSignedUp)
       const user = {...userSignedUp, displayName:name}
+      // console.log('user to go to db', user);
       await createUserProfileDoc(user);
       this.setState({
         email:'',
@@ -59,7 +50,6 @@ class SignUp extends React.Component{
   }
 
   render(){
-    // console.log('SignUp props', this.props);
     return(
       <div className="sign-up">
         <h2>I do not have an account</h2>
