@@ -45,7 +45,7 @@ const NavHeader = ({currentUser, hidden, purge_storage}) => {
         <LinkBox to='/shop'>
           SHOP
         </LinkBox>
-        <LinkBox to='/shop'>
+        <LinkBox to='/'>
           CONTACT
         </LinkBox>
         {renderSignOut()}
