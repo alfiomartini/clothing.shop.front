@@ -16,7 +16,7 @@ import CheckoutPage from './pages/CheckoutPage/CheckoutPage.jsx';
 import {auth, createUserProfileDoc} from './firebase/firebase.utils';
 
 import {connect} from 'react-redux';
-import {setCurrentUser} from './reducers/actions';
+import {setCurrentUser, purge_storage} from './reducers/actions';
 import {selectCurrentUser, selectCollectionsArray} from './reducers/selectors';
 
 class App extends React.Component{
@@ -31,6 +31,7 @@ class App extends React.Component{
       // if there is an authenticated user
       if (userAuth){
         console.log('Auth state changed...');
+        this.props.purge_storage();
         // fetch  a reference to the user from the db (existing or created)
         // https://firebase.google.com/docs/firestore/query-data/listen
         // an authenticated user must be in the db already, so
@@ -105,6 +106,7 @@ const mapStateToProps = state => ({
 
 //redux stuff
 const mapDispatchToProps = dispatch => ({
-   setCurrentUser: user => dispatch(setCurrentUser(user))
+   setCurrentUser: user => dispatch(setCurrentUser(user)),
+   purge_storage: () => dispatch(purge_storage())
 })
 export default connect(mapStateToProps, mapDispatchToProps)(App);
