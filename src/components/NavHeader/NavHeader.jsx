@@ -1,4 +1,6 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+
 // import {Link} from 'react-router-dom';
 // import {ReactComponent as Logo} from '../../assets/crown.svg';
 
@@ -16,12 +18,13 @@ import {selectCartHidden} from '../../reducers/selectors';
 import {selectCurrentUser} from '../../reducers/selectors';
 import {purge_storage } from '../../reducers/actions';
 
-const NavHeader = ({currentUser, hidden, purge_storage}) => {
+const NavHeader = ({currentUser, hidden, purge_storage, history}) => {
 
   const signOut = () => {
     // unsubscribe(); is this needed?
     auth.signOut();
     purge_storage();
+    history.push('/');
     // storage.removeItem('persist:root');
   }
 
@@ -72,4 +75,4 @@ const mapDispatchToProps = dispatch =>({
 // connect is a highetr order function that return a
 // higher order component, that takes NavHeader as its
 // child
-export default connect(mapStateToProps, mapDispatchToProps)(NavHeader);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavHeader));

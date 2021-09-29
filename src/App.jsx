@@ -73,7 +73,7 @@ class App extends React.Component{
     // console.log('app store', store.getState());
     return (
       <div>
-        <NavHeader unsubscribe = {this.unsubscribeFromAuth}/>
+        <NavHeader />
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage}/>
