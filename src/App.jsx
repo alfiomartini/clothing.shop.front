@@ -31,7 +31,8 @@ class App extends React.Component{
       // if there is an authenticated user
       if (userAuth){
         console.log('Auth state changed...');
-        this.props.purge_storage();
+        // if there is a currently logged in user, clean cart
+        if (this.props.currentUser) this.props.purge_storage();
         // fetch  a reference to the user from the db (existing or created)
         // https://firebase.google.com/docs/firestore/query-data/listen
         // an authenticated user must be in the db already, so
