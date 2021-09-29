@@ -98,14 +98,9 @@ const mapStateToProps = state => ({
   collectionsArray:selectCollectionsArray(state)
 })
 
-// not memoized selection
-// const mapStateToProps = state => ({
-//   currentUser:state.user.currentUser
-// })
-
+ 
 // https://stackoverflow.com/questions/45169566/how-does-mapdispatchtoprops-work-in-react-redux
 
-//redux stuff
 const mapDispatchToProps = dispatch => ({
    setCurrentUser: user => dispatch(setCurrentUser(user)),
    purge_storage: () => dispatch(purge_storage())
