@@ -1,5 +1,5 @@
 import {DEC_ITEM_COUNT, REMOVE_CART_ITEM, TOGGLE_CART_HIDDEN} from './action_types';
-import {ADD_CART_ITEM} from './action_types';
+import {ADD_CART_ITEM, PURGE_STORAGE} from './action_types';
 import {addItemToCart} from './reducer_utils';
 import {removeItemFromCart} from './reducer_utils';
 import {decItemQuantity} from './reducer_utils';
@@ -11,6 +11,11 @@ const INITIAL_STATE = {
 
 const cartReducer = (state=INITIAL_STATE, action) => {
   switch (action.type){
+    case PURGE_STORAGE:
+      return {
+        ...state,
+        cartItems: []
+      };
     case TOGGLE_CART_HIDDEN:
       return {
         ...state,

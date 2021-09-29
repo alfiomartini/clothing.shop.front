@@ -6,6 +6,7 @@ import {REMOVE_CART_ITEM} from './action_types';
 import {DEC_ITEM_COUNT} from './action_types';
 import {UPDATE_SHOP_DATA} from './action_types';
 import {FETCH_COLLECTION_ERROR, FETCH_COLLECTION_FINISHED, FETCH_COLLECTION_STARTED} from './action_types';
+import {PURGE_STORAGE} from './action_types';
 
 import {firestore, transformCollectionToMap} from '../firebase/firebase.utils';
 
@@ -41,6 +42,10 @@ export const updateCollectionAsync = () => {
 }
 
 // synchronus actions
+
+export const purge_storage = () => ({
+  type:PURGE_STORAGE
+});
 
 export const updateShopData = collection => ({
   type:UPDATE_SHOP_DATA,

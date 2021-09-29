@@ -13,13 +13,16 @@ import CartDropdown from '../CartDropdown/CartDropdown';
 import {LogoBox, NavContainer, Options, LinkBox, OptionDiv} from './NavHeaderStyles';
 
 import {selectCartHidden} from '../../reducers/selectors';
-import {selectCurrentUser} from '../../reducers/selectors'
+import {selectCurrentUser} from '../../reducers/selectors';
+import {purge_storage } from '../../reducers/actions';
 
-const NavHeader = ({currentUser, hidden, unsubscribe}) => {
+const NavHeader = ({currentUser, hidden, purge_storage}) => {
 
   const signOut = () => {
     // unsubscribe(); is this needed?
     auth.signOut();
+    purge_storage();
+    // storage.removeItem('persist:root');
   }
 
   const renderSignOut = () => {
@@ -61,8 +64,12 @@ const mapStateToProps = (state) => ({
    currentUser: selectCurrentUser(state)
 });
 
+const mapDispatchToProps = dispatch =>({
+  purge_storage: () =>  dispatch(purge_storage())
+})
+
 
 // connect is a highetr order function that return a
 // higher order component, that takes NavHeader as its
 // child
-export default connect(mapStateToProps)(NavHeader);
+export default connect(mapStateToProps, mapDispatchToProps)(NavHeader);
