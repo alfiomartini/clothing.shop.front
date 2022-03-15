@@ -9,6 +9,7 @@ node_modules
 build
 
 # misc
+.vscode
 ishua_files
 css
 firebase.pdf

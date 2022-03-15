@@ -9,14 +9,14 @@
 // - All of the input selector results become arguments to the output selector
 // - The final result of the output selector is cached for next time
 
-import {createSelector} from 'reselect';
+import { createSelector } from "reselect";
 
-import {itemsCount} from '../reducers/reducer_utils';
+import { itemsCount } from "../reducers/reducer_utils";
 // input selector
- const getCart = state => state.cart;
- const getUser = state => state.user;
- const getSections = state => state.sections;
- const getCollections = state => state.collections;
+const getCart = (state) => state.cart;
+const getUser = (state) => state.user;
+const getSections = (state) => state.sections;
+const getCollections = (state) => state.collections;
 
 // (memoized) selectors
 
@@ -24,46 +24,42 @@ export const selectSections = createSelector(
   // projects (selects) sections field from store (root reducer)
   getSections,
   // select sections field from sections_reducer (state)
-  sections => sections.sections
-)
+  (sections) => sections.sections
+);
 
-// select colections retorns a map (a huge object)
+// select collections returns a map (a huge object)
 export const selectCollections = createSelector(
   getCollections,
-  collections => collections.collections
-)
+  (collections) => collections.collections
+);
 
 // takes care when the collection is null (initial state)
 export const selectCollectionsArray = createSelector(
   selectCollections,
-  collections => collections? Object.keys(collections).map(key => collections[key]):[]
-)
+  (collections) =>
+    collections ? Object.keys(collections).map((key) => collections[key]) : []
+);
 
 // The code bellow works because collections (SHOP_DATA) is organized as a large
 // object (actually a map)
 // takes care when the collection is null (initial state)
-export const selectCollection = collectionName => 
-  createSelector(
-    selectCollections,
-    collections => collections? collections[collectionName] : null
-  )
+export const selectCollection = (collectionName) =>
+  createSelector(selectCollections, (collections) =>
+    collections ? collections[collectionName] : null
+  );
 
 export const selectCartItems = createSelector(
   getCart,
-  cart => cart.cartItems
+  (cart) => cart.cartItems
 );
 
-export const selectItemsCount = createSelector(
-  selectCartItems,
-  items => itemsCount(items)
+export const selectItemsCount = createSelector(selectCartItems, (items) =>
+  itemsCount(items)
 );
 
-export const selectCartHidden = createSelector(
-  getCart,
-  cart => cart.hidden
-)
+export const selectCartHidden = createSelector(getCart, (cart) => cart.hidden);
 
 export const selectCurrentUser = createSelector(
   getUser,
-  user => user.currentUser
-)
+  (user) => user.currentUser
+);

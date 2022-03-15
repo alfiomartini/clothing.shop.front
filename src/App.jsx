@@ -4,7 +4,7 @@ import React from 'react';
 // https://www.sitepoint.com/react-router-complete-guide/
 import {Route, Switch, Redirect} from 'react-router-dom';
 
-// importing this for debugguing purposes
+// importing this for debugging purposes
 // import {store} from './reducers/store';
  
 import ShopPage from './pages/ShopPage/ShopPage.jsx';
@@ -71,6 +71,9 @@ class App extends React.Component{
   }
   render(){
     // console.log('app store', store.getState());
+    //  the props will be formed by merging the objects returned
+    //  by mapStateToProps and mapDispatchToProps
+    // console.log('App props', this.props);
     return (
       <div>
         <NavHeader />
